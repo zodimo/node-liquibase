@@ -8,12 +8,11 @@
   ],
   "scripts": {
     "build:lib": "npm run build:js && npm run copy:dependencies",
-    "build:js": "babel src --out-dir lib",
-    "watch:js": "babel src --out-dir lib --watch",
-    "copy:dependencies": "npm run copy:liquibase && npm run copy:drivers && npm run copy:change-log-examples",
-    "copy:liquibase": "ncp ./src/liquibase-4.0.0 ./lib/liquibase-4.0.0",
-    "copy:drivers": "ncp ./src/Drivers ./lib/Drivers",
-    "copy:change-log-examples": "ncp ./src/change-log-examples ./lib/change-log-examples",
+    "build:js": "tsc",
+    "watch:js": "tsc -w",
+    "copy:dependencies": "npm run copy:liquibase && npm run copy:drivers",
+    "copy:liquibase": "ncp ./bin/liquibase ./lib/liquibase",
+    "copy:drivers": "ncp ./drivers ./lib/drivers",
     "clean:lib": "rimraf ./lib/**",
     "start": "npm run build && npm run watch:lib",
     "watch:lib": "nodemon lib/index.js",
@@ -58,7 +57,9 @@
     "nodemon": "^2.0.3",
     "nyc": "^15.0.1",
     "rimraf": "^3.0.2",
-    "semantic-release": "^17.0.7"
+    "semantic-release": "^17.0.7",
+    "tsc": "^1.20150623.0",
+    "typescript": "^4.2.4"
   },
   "dependencies": {},
   "ava": {

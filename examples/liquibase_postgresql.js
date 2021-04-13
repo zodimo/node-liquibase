@@ -45,7 +45,7 @@ liquibase(config)
 //   .catch((err) => console.error('fail', err));
 
 // liquibase({
-//   referenceUrl: 'jdbc:postgresql://localhost:5432/MYDATABASE_DEV',
+//   referenceUrl: 'jdbc:postgresql://localhost:5432/MY_DATABASE_DEV',
 //   referenceUsername: 'postgres',
 //   referencePassword: 'password',
 //   overwriteOutputFile: 'true',
@@ -59,8 +59,8 @@ liquibase(config)
 //   .catch((err) => console.error('fail', err));
 
 // liquibase({
-//   url: 'jdbc:postgresql://localhost:5432/MYDATABASE_TEST',
-//   classpath: 'Drivers/postgresql-42.2.8.jar',
+//   url: 'jdbc:postgresql://localhost:5432/MY_DATABASE_TEST',
+//   classpath: 'drivers/postgresql-42.2.8.jar',
 //   username: 'postgres',
 //   password: 'password',
 //   overwriteOutputFile: 'true',
@@ -74,8 +74,8 @@ liquibase(config)
 
 // liquibase({
 //   changeLogFile: 'change-log-examples/postgreSQL/my_new_changelog.postgresql.sql',
-//   url: 'jdbc:postgresql://localhost:5432/MYDATABASE_TEST',
-//   classpath: 'Drivers/postgresql-42.2.8.jar',
+//   url: 'jdbc:postgresql://localhost:5432/MY_DATABASE_TEST',
+//   classpath: 'drivers/postgresql-42.2.8.jar',
 //   username: 'postgres',
 //   password: 'password',
 //   logLevel: 'debug',
