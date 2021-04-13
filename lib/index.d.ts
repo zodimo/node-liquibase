@@ -1,14 +1,15 @@
 #!/usr/bin/env node
+import { CalculateCheckSumCommandAttributes } from './models/calculate-check-sum-command-attributes.model';
 import { LiquibaseConfig } from './models/liquibase-config.model';
 import { UpdateCommandAttributes } from './models/update-command-attributes.model';
 export declare class Liquibase {
     private params;
     /**
-       * @description Returns an instance of a lightweight Liquibase Wrapper.
-       *
-       * @param params Configuration for an instance of `Liquibase`
-       *
-       * * @example
+     * @description Returns an instance of a lightweight Liquibase Wrapper.
+     *
+     * @param params Configuration for an instance of `Liquibase`
+     *
+     * * @example
      * ```javascript
      * const liquibase = require('node-liquibase');
      *
@@ -25,7 +26,7 @@ export declare class Liquibase {
      *   .then(() => console.log('success'))
      *   .catch((err) => console.error('fail', err));
      * ```
-       */
+     */
     constructor(params: LiquibaseConfig);
     /**
     * The update command deploys any changes that are in the changelog file and that have not been deployed to your database yet.
@@ -38,6 +39,18 @@ export declare class Liquibase {
     * If they are different, Liquibase will produce an error message that someone has changed it unexpectedly. However, if the status of the runOnChange or runAlways changeset attribute is set to TRUE, Liquibase will re-apply the changeset.
     */
     update(params: UpdateCommandAttributes): void;
+    /**
+     * The calculateCheckSum <id> command calculates and prints a checksum for the changeset with the specified id in the following format: filepath::id::author.
+     *
+     * @param params - Arguments/Attribute for the command.
+     *
+     * @description The calculateCheckSum <id> command is typically used to compute an MD5 checksum, which serves as a unique identifier for the changeset. As a result, you can see whether the changeset has been changed and whether it has to be deployed differently now.
+     * When running the calculateCheckSum <id> command, the DATABASECHANGELOG table calculates an MD5 checksum for each entry based on the SQL script of the changeset. This checksum helps Liquibase detect differences between the changesets you want to deploy and the changesets that have already been run against the database.
+     * The MD5SUM column in the DATABASECHANGELOG table contains a checksum of the changeset and any change made in the changeset will result in a different checksum.
+     *
+     * {@link https://docs.liquibase.com/commands/community/calculatechecksum.html Documentation}
+     */
+    calculateCheckSum(params: CalculateCheckSumCommandAttributes): void;
     private stringifyParams;
     /**
      * LEGACY CODE START
