@@ -735,12 +735,6 @@ export class Liquibase {
 	 */
 	// private spawnChildProcess(commandString: string): Promise<number | null | Error> {
 	private spawnChildProcess(commandString: string): Promise<unknown> {
-		/**
-		 * New Approach
-		 */
-		/**
-		 * Old Approach
-		 */
 		console.log(`Running ${commandString}...`);
 		// let child;
 		let promise = new Promise((resolve, reject) => {
