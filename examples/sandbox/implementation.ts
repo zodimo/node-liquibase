@@ -1,4 +1,4 @@
-import { LiquibaseConfig, Liquibase, POSTGRESQL_DEFAULT_CONFIG } from '../../lib'
+import { LiquibaseConfig, Liquibase, POSTGRESQL_DEFAULT_CONFIG } from '../../lib/esm'
 
 const myConfig: LiquibaseConfig = {
 	...POSTGRESQL_DEFAULT_CONFIG,
@@ -8,10 +8,10 @@ const myConfig: LiquibaseConfig = {
 }
 const instance = new Liquibase(myConfig);
 
-async function play() {
+async function doEet() {
 	await instance.status();
 	// await instance.update();
 	// await instance.dropAll();
 }
 
-play();
+doEet();
