@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Node.js wrapper for Liquibase",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -16,6 +17,7 @@
     "copy:drivers": "ncp ./drivers ./lib/drivers",
     "clean:lib": "rimraf ./lib/**",
     "start": "npm run build && npm run watch:lib",
+    "start:sandbox": "npx ts-node --project ./tsconfig.json ./examples/sandbox/implementation.ts",
     "watch:lib": "nodemon lib/index.js",
     "test": "yarn jest",
     "test:watch": "yarn jest --watchAll",
