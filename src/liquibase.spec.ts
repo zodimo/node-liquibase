@@ -1,5 +1,4 @@
 require('dotenv').config();
-import { join } from 'path';
 import { Liquibase } from './index';
 import { LiquibaseConfig } from './models/index';
 import { POSTGRESQL_DEFAULT_CONFIG } from './constants/defaults/postgresql-default.config';
@@ -19,7 +18,6 @@ describe('Liquibase', () => {
 
 	describe('#status', () => {
 		it('should succeed', async (done) => {
-			console.warn(validPostgresConfig.classpath)
 			const instance = new Liquibase(validPostgresConfig);
 			const test = await instance.status();
 			expect(test).toBeTruthy();

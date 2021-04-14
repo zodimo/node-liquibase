@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { exec } from 'child_process';
-import { join } from 'path';
+// import { join } from 'path';
+import { CommandHandler, FileHelper } from './util';
 import { POSTGRESQL_DEFAULT_CONFIG } from './constants/defaults/postgresql-default.config';
 import { LiquibaseCommands } from './enums/liquibase-commands.enum';
 import {
@@ -737,21 +737,7 @@ export class Liquibase {
 	 */
 	// private spawnChildProcess(commandString: string): Promise<number | null | Error> {
 	private spawnChildProcess(commandString: string): Promise<unknown> {
-		console.log(`Running ${commandString}...`);
-		// let child;
-		let promise = new Promise((resolve, reject) => {
-			exec(commandString, (error, stdout, stderr) => {
-				console.log('\n', stdout);
-				if (error) {
-					console.error('\n', stderr);
-					// error.stderr = stderr;
-					return reject(error);
-				}
-				resolve(stdout);
-			});
-		});
-		// promise.child = child;
-		return promise;
+		return CommandHandler.spawnChildProcess(commandString);
 	}
 
 	/**
@@ -763,7 +749,8 @@ export class Liquibase {
 	private mergeParamsWithDefaults(params: LiquibaseConfig) {
 		const defaults: LiquibaseConfig = {
 			...POSTGRESQL_DEFAULT_CONFIG,
-			liquibase: join(__dirname, '../bin/liquibase/liquibase'),
+			// liquibase: join(__dirname, '../bin/liquibase/liquibase'), // NOTE: Changed this while debuggin.
+			liquibase: FileHelper.bundledLiquibasePath,
 		}
 		this.params = Object.assign({}, defaults, params);
 	}

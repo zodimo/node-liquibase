@@ -1,0 +1,7 @@
+export interface UpdateToTagCommandAttributes {
+    /**
+     * The tag you can add to changesets to determine which changesets in the changelog to evaluate based on their tags.
+     */
+    tag: string;
+}
+//# sourceMappingURL=update-to-tag-command-attributes.model.d.ts.map
