@@ -1,8 +1,15 @@
 #!/usr/bin/env node
-import { spawn } from 'child_process';
-import { join } from 'path';
-import { LiquibaseCommands } from './enums/liquibase-commands.enum';
-import { LiquibaseConfig, CalculateCheckSumCommandAttributes, UpdateCommandAttributes } from './models/index';
+import {spawn} from 'child_process';
+import {join} from 'path';
+import {LiquibaseCommands} from './enums/liquibase-commands.enum';
+import {CalculateCheckSumCommandAttributes,
+	LiquibaseConfig,
+	UpdateCommandAttributes,
+	ChangelogSyncToTagCommandAttributes,
+	ChangelogSyncToTagSQLCommandAttributes,
+	DbDocCommandAttributes,
+	DiffChangelogCommandAttributes,
+	DiffCommandAttributes} from './models/index';
 
 
 export class Liquibase {
@@ -60,8 +67,77 @@ export class Liquibase {
 	 *
 	 * {@link https://docs.liquibase.com/commands/community/calculatechecksum.html Documentation}
 	 */
-	calculateCheckSum(params: CalculateCheckSumCommandAttributes) {
+	public calculateCheckSum(params: CalculateCheckSumCommandAttributes) {
 		this.run(LiquibaseCommands.CalculateCheckSum, params);
+	}
+
+	/**
+	 *
+	 */
+	public changelogSync(): void {
+		this.run(LiquibaseCommands.ChangelogSync, []);
+	}
+
+	/**
+	 *
+	 */
+	public changelogSyncSQL(): void {
+		this.run(LiquibaseCommands.ChangelogSyncSql, []);
+	}
+
+	/**
+	 *
+	 * @param params
+	 */
+	public changelogSyncToTag(params: ChangelogSyncToTagCommandAttributes): void {
+		this.run(LiquibaseCommands.ChangelogSyncToTag, params);
+	}
+
+	/**
+	 *
+	 * @param params
+	 */
+	public changelogSyncToTagSQL(params: ChangelogSyncToTagSQLCommandAttributes): void {
+		this.run(LiquibaseCommands.ChangelogSyncToTagSql, params);
+	}
+
+	/**
+	 *
+	 */
+	public clearCheckSums() {
+		this.run(LiquibaseCommands.ClearCheckSums, []);
+	}
+
+	/**
+	 *
+	 * @param params
+	 */
+	public dbDoc(params: DbDocCommandAttributes) {
+		this.run(LiquibaseCommands.DbDoc, params);
+	}
+
+	/**
+	 *
+	 * @param params
+	 */
+	public deactivateChangeLog() {
+		this.run(LiquibaseCommands.DeactivateChangeLog, []);
+	}
+
+	/**
+	 *
+	 * @param params
+	 */
+	public diff(params: DiffCommandAttributes) {
+		this.run(LiquibaseCommands.Diff, params);
+	}
+
+	/**
+	 *
+	 * @param params
+	 */
+	public diffChangelog(params: DiffChangelogCommandAttributes) {
+		this.run(LiquibaseCommands.DiffChangeLog, params);
 	}
 
 	private stringifyParams(params: { [key: string]: any }) {
