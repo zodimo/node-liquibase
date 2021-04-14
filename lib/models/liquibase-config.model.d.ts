@@ -2,7 +2,7 @@ export interface LiquibaseConfig {
     /**
      * Absolute path to your Liquibase executable.
      */
-    liquibase: string;
+    liquibase?: string;
     /**
      * Absolute path to your Change Log File
      */
@@ -22,9 +22,21 @@ export interface LiquibaseConfig {
     /**
      * Your Liquibase Pro License key
      */
-    liquibaseProLicenseKey: string;
+    liquibaseProLicenseKey?: string;
     /**
      * Absolute path to your JDBC driver jar file
      */
     classpath: string;
+    /**
+     * JDBC connection string for ref database
+     */
+    referenceUrl?: string;
+    /**
+     * username for ref database
+     */
+    referenceUsername?: string;
+    /**
+     * password for ref database
+     */
+    referencePassword?: string;
 }
