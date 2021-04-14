@@ -18,3 +18,8 @@ export * from './update-count-sql-command-attributes.model';
 export * from './update-sql-command-attributes.model';
 export * from './update-to-tag-command-attributes.model';
 export * from './update-to-tag-sql-command-attributes.model'
+export * from './changelog-sync-to-tag-command-attributes.model';
+export * from './changelog-sync-to-tag-sql-command-attributes.model';
+export * from './db-doc-command-attributes.model';
+export * from './diff-changelog-command-attributes.model';
+export * from './diff-command-attributes.model';
