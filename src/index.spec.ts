@@ -1,29 +1,41 @@
-// require('dotenv').config();
-// import test from 'ava';
-// import liquibase from '../index';
-// import * as path from 'path';
+require('dotenv').config();
+import * as path from 'path';
+import { Liquibase } from './index';
+import { LiquibaseConfig } from './models/index';
 
-// test('Update Success', async (t) => {
-// 	await t.notThrowsAsync(async () => {
-// 		const config = {
-// 			changeLogFile: path.join(__dirname, 'change-log-examples/postgreSQL/changelog.xml'),
-// 			url: '"jdbc:postgresql://localhost:5432/postgres"',
-// 			username: process.env.LOCAL_PG_USER || 'postgres',
-// 			password: process.env.LOCAL_PG_PASS || 'admin',
-// 			classpath: path.join(__dirname, './drivers/postgresql-42.2.8.jar')
-// 		};
-// 		return await liquibase(config).run('update')
-// 	});
-// });
+describe('Liquibase', () => {
+	const validPostgresConfig: LiquibaseConfig = {
+		changeLogFile: '/examples/change-log-examples/postgreSQL/changelog.xml',
+		url: 'jdbc:postgresql://localhost:5432/node_liquibase_testing',
+		username: /* process.env.LOCAL_PG_USER || */ 'yourusername',
+		password: /* process.env.LOCAL_PG_PASS || */ 'yoursecurepassword',
+		classpath: path.join(__dirname, '../drivers/postgresql-42.2.8.jar')
+		// classpath: 'drivers/postgresql-42.2.8.jar',
+	};
+	describe('#constructor', () => {
+		it('should create an instance', () => {
+			const instance = new Liquibase(validPostgresConfig);
+			expect(instance).toBeInstanceOf(Liquibase);
+		});
+	});
 
-// test('Update Fail', async (t) => {
-// 	await t.throwsAsync(async () => {
-// 		const config = {
-// 			changeLogFile: 'resources/liquibase/db.changelog.xml',
-// 			url: '"jdbc:postgresql://localhost:5432/postgres"',
-// 			username: process.env.LOCAL_MSSQL_USER || 'postgres!123',
-// 			password: process.env.LOCAL_MSSQL_PASS || 'admin!123'
-// 		};
-// 		return await liquibase(config).run('update')
-// 	});
-// });
+	describe('#status', () => {
+		it('should succeed', async (done) => {
+			const instance = new Liquibase(validPostgresConfig);
+			const test = await instance.status();
+			expect(test).toBeTruthy();
+			done();
+		});
+
+		it('should fail', async (done) => {
+			const config: LiquibaseConfig = {
+				...validPostgresConfig,
+				classpath: undefined,
+			};
+			const instance = new Liquibase(config);
+			expect(instance).toBeDefined();
+			await expect(instance.status()).rejects.toThrow();
+			done();
+		});
+	});
+});
