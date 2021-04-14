@@ -6,13 +6,13 @@ export interface UpdateCommandAttributes {
   /**
    * Expressions you can add to changesets to determine which changesets in the changelog to evaluate based on their contexts
    */
-  url: string;
+  contexts?: string;
   /**
-   * Specifies in what Schema the Liquibase DATABASECHANGELOG and DATABASECHANGELOGLOCK tables will be managed	
+   * Specifies in what Schema the Liquibase DATABASECHANGELOG and DATABASECHANGELOGLOCK tables will be managed
    */
-  username: string;
+  liquibaseSchemaName?: string;
   /**
-   * For MSSQL only: Specifies in what Catalog the Liquibase DATABASECHANGELOG and DATABASECHANGELOGLOCK tables will be managed	
+   * For MSSQL only: Specifies in what Catalog the Liquibase DATABASECHANGELOG and DATABASECHANGELOGLOCK tables will be managed
    */
-  password: string;
+  liquibaseCatalogName?: string;
 }

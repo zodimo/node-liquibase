@@ -6,6 +6,9 @@ coverage
 # Mac OS
 .DS_Store
 
+# IntelliJ IDEA
+.idea
+
 # Logs
 logs
 *.log
