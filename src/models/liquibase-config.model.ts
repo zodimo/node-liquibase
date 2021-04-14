@@ -27,4 +27,20 @@ export interface LiquibaseConfig {
    * Absolute path to your JDBC driver jar file
    */
   classpath: string;
+
+  /**
+   * JDBC connection string for ref database
+   */
+  referenceUrl?: string;
+
+  /**
+   * username for ref database
+   */
+  referenceUsername?: string;
+
+  /**
+   * password for ref database
+   */
+  referencePassword?: string;
+
 }
