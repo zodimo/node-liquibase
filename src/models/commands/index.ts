@@ -13,3 +13,8 @@ export * from './tag-command-attributes.model';
 export * from './tag-exists-command-attributes.model';
 export * from './future-rollback-count-sql-command-attributes.model';
 export * from './generate-changelog-command-attributes.model';
+export * from './update-count-command-attributes.model';
+export * from './update-count-sql-command-attributes.model';
+export * from './update-sql-command-attributes.model';
+export * from './update-to-tag-command-attributes.model';
+export * from './update-to-tag-sql-command-attributes.model'
