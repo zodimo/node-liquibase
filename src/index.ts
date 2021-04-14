@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { exec } from 'child_process';
 import { join } from 'path';
+import { POSTGRESQL_DEFAULT_CONFIG } from './constants/defaults/postgresql-default.config';
 import { LiquibaseCommands } from './enums/liquibase-commands.enum';
 import {
 	LiquibaseConfig,
@@ -757,27 +758,18 @@ export class Liquibase {
 		return promise;
 	}
 
+	/**
+	 * For now, we will assume Postgres is the 'default' database type.
+	 * In the future we can be smarter about how we merge these configs.
+	 *
+	 * @param params User Provided `LiquibaseConfig`
+	 */
 	private mergeParamsWithDefaults(params: LiquibaseConfig) {
-		const defaultParams = {
-			// MSSQL Default Parameters
+		const defaults: LiquibaseConfig = {
+			...POSTGRESQL_DEFAULT_CONFIG,
 			liquibase: join(__dirname, '../bin/liquibase/liquibase'),
-			changeLogFile: join(__dirname, '../examples/change-log-examples/mssql/changelog.mssql.sql'),
-			url: '"jdbc:sqlserver://<IP OR HOSTNAME>:<port number>;database=<database name>;"',
-			username: '<username>',
-			password: '<password>',
-			// liquibaseProLicenseKey: '<paste liquibase-pro-license-key here>',
-			// classpath: join(__dirname, '../drivers/mssql-jdbc-7.4.1.jre8.jar')
-			// PostgreSQL Default Parameters Template
-			// liquibase: 'liquibase/liquibase',
-			// changeLogFile: 'change-log-examples/postgreSQL/changelog.postgresql.sql',
-			// url: 'jdbc:postgresql://<IP OR HOSTNAME>:5432/MY_DATABASE_TEST',
-			// username: 'postgres',
-			// password: 'password',
-			// //liquibaseProLicenseKey: '<paste liquibase-pro-license-key here>',
-			// classpath: 'drivers/postgresql-42.2.8.jar'
-		};
-
-		this.params = Object.assign({}, defaultParams, params);
+		}
+		this.params = Object.assign({}, defaults, params);
 	}
 
 	/**
