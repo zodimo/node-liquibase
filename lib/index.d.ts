@@ -528,5 +528,11 @@ export declare class Liquibase {
      * @param {*} commandString Liquibase commandString
      */
     private spawnChildProcess;
+    /**
+     * For now, we will assume Postgres is the 'default' database type.
+     * In the future we can be smarter about how we merge these configs.
+     *
+     * @param params User Provided `LiquibaseConfig`
+     */
     private mergeParamsWithDefaults;
 }
