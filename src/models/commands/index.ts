@@ -11,3 +11,5 @@ export * from './snapshot-reference-command-attributes.model';
 export * from './sync-hub-command-attributes.model';
 export * from './tag-command-attributes.model';
 export * from './tag-exists-command-attributes.model';
+export * from './future-rollback-count-sql-command-attributes.model';
+export * from './generate-changelog-command-attributes.model';
