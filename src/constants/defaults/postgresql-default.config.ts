@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { LiquibaseConfig } from 'models';
+import { LiquibaseConfig } from '../../models';
 
 export const POSTGRESQL_DEFAULT_CONFIG: LiquibaseConfig = {
 	changeLogFile: '/examples/change-log-examples/postgreSQL/changelog.xml',
