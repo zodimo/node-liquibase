@@ -44,6 +44,9 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 
 	rm -rf ./liquibase
 
+	# Update package.json version w/ $LIQUIBASE_VERSION
+	# sed ...
+
 	echo "Done!"
 
 	# # Add the modified files to git.
