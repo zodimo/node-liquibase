@@ -4,6 +4,10 @@ export interface LiquibaseConfig {
    */
   liquibase?: string;
   /**
+   * Absolute path to your Liquibase executable.
+   */
+  liquibasePropertiesFile?: string;
+  /**
    * Absolute path to your Change Log File
    */
   changeLogFile: string;
