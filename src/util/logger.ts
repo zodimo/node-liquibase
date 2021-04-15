@@ -1,4 +1,4 @@
-import { LIQUIBASE_LABEL } from 'constants/tokens/liquibase-label';
+import { LIQUIBASE_LABEL } from '../constants';
 
 
 export class Logger {
