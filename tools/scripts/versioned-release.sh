@@ -66,7 +66,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 
 		printf "\n"
 		echo "Trying a different technique..."
-		sed -i '' "s/\"version\": \"1.0.1\"/\"version\": \"${LIQUIBASE_VERSION}\"/" ../package.json
+		sed -i '' "s/\"version\": \"${PACKAGE_VERSION}\"/\"version\": \"${LIQUIBASE_VERSION}\"/" ../package.json
 
 		# Re-Evaluate package.json version.
 		PACKAGE_VERSION=$(cat ../package.json \
