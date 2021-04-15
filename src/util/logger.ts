@@ -1,4 +1,5 @@
-import { LIQUIBASE_LABEL } from 'constants/defaults';
+import { LIQUIBASE_LABEL } from 'constants/tokens/liquibase-label';
+
 
 export class Logger {
 	constructor() {}
