@@ -10,7 +10,7 @@ export class FileHelper {
 	}
 
 	public static get bundledLiquibasePathForExternalConsumers(): string {
-		const liquibaseExecutablePath = join(__dirname, '../../liquibase/liquibase');
+		const liquibaseExecutablePath = join(__dirname, 'liquibase/liquibase');
 		return liquibaseExecutablePath;
 	}
 
