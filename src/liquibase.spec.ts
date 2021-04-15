@@ -27,8 +27,9 @@ import {
 	UpdateToTagCommandAttributes,
 	UpdateToTagSQLCommandAttributes
 } from './index';
-import {LiquibaseConfig} from './models/index';
-import {POSTGRESQL_DEFAULT_CONFIG} from './constants/defaults/postgresql-default.config';
+import { LiquibaseConfig } from './models/index';
+import { POSTGRESQL_DEFAULT_CONFIG } from './constants/defaults/postgresql-default.config';
+import { join } from 'path';
 
 describe('Liquibase', () => {
 
@@ -37,6 +38,8 @@ describe('Liquibase', () => {
 
 	const validPostgresConfig: LiquibaseConfig = {
 		...POSTGRESQL_DEFAULT_CONFIG,
+		changeLogFile: './examples/change-log-examples/postgreSQL/changelog.xml',
+		classpath: join(__dirname, '../drivers/postgresql-42.2.8.jar'),
 		username: 'yourusername',
 		password: 'yoursecurepassword',
 	};
@@ -44,7 +47,7 @@ describe('Liquibase', () => {
 	beforeEach(() => {
 		config = {
 			...validPostgresConfig,
-			classpath: undefined,
+			classpath: undefined as any,
 		};
 		instance = new Liquibase(config);
 	})
