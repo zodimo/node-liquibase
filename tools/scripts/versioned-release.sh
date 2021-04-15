@@ -1,8 +1,10 @@
-#!/bin/bash
+#! /bin/bash
+
+# RUN IT FROM ROOT PROJECT FOLDER - 'node-liquibase'
 
 # Test version argument.
 if [ -z "$1" ]; then
-  echo "A release version must be supplied (e.g. 7.0.1)."
+  echo 'A release version must be supplied (e.g. 7.0.1).'
 
   exit 1
 fi
@@ -45,7 +47,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	rm -rf ./liquibase
 
 	# Update package.json version w/ $LIQUIBASE_VERSION
-	# sed ...
+	sed -i 's|\(.*"version"\): "\(.*\)",.*|\1: '"\"$LIQUIBASE_VERSION\",|" ../package.json
 
 	echo "Done!"
 
