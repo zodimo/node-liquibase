@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { LiquibaseConfig } from 'models';
+import { LiquibaseConfig } from '../../models';
 
 export const MSSQL_DEFAULT_CONFIG: LiquibaseConfig = {
 	url: 'jdbc:sqlserver://<IP_OR_HOSTNAME>:;database=sqlserver;',
