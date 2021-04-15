@@ -13,15 +13,11 @@ PWD=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 echo $PWD
 
 # Move to appropriate working dir.
-# NOTE: None of this works right.
-# cd ../../
 mkdir -p tmp
 cd ./tmp
-# pwd
-# ls -la
 
 # Prepare a new branch for this update.
-echo "git checkout -b versioned-release/liquibase-${1//\./\-}"
+git checkout -b versioned-release/liquibase-${1//\./\-}
 
 # Download the requested tagged release.
 echo "Downloading Liquibase Release Version $1..."
