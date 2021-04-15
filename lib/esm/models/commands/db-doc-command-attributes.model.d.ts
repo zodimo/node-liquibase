@@ -1,0 +1,7 @@
+export interface DbDocCommandAttributes {
+    /**
+     * The directory where the database documentation is generated.
+     */
+    outputDirectory: string;
+}
+//# sourceMappingURL=db-doc-command-attributes.model.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"mssql-default.config.js","sourceRoot":"","sources":["../../../../src/constants/defaults/mssql-default.config.ts"],"names":[],"mappings":";;;AAAA,6BAA4B;AAGf,QAAA,oBAAoB,GAAoB;IACpD,GAAG,EAAE,wDAAwD;IAC7D,aAAa,EAAE,mDAAmD;IAClE,QAAQ,EAAE,IAAI;IACd,QAAQ,EAAE,EAAE;IACZ,SAAS,EAAE,WAAI,CAAC,SAAS,EAAE,4CAA4C,CAAC;CACxE,CAAC"}
