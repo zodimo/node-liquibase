@@ -56,7 +56,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	git add $PWD/../bin
 
 	# # Commit with the standard message.
-	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION" --dry-run
+	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION"
 else
 	# If it was NOT downloaded...
 	echo "$TARBALL_FILE_NAME was not downloaded. Please ensure that you've supplied a valid version number for a Liquibase release."
