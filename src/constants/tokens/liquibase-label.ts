@@ -1,0 +1,1 @@
+export const LIQUIBASE_LABEL = '[NODE-LIQUIBASE]';
