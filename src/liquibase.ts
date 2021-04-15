@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // import { join } from 'path';
-import {CommandHandler, FileHelper} from './util';
-import {POSTGRESQL_DEFAULT_CONFIG} from './constants/defaults/postgresql-default.config';
-import {LiquibaseCommands} from './enums/liquibase-commands.enum';
+import { CommandHandler, FileHelper } from './util';
+import { POSTGRESQL_DEFAULT_CONFIG } from './constants/defaults/postgresql-default.config';
+import { LiquibaseCommands } from './enums/liquibase-commands.enum';
 import {
 	LiquibaseConfig,
 	CalculateCheckSumCommandAttributes,
