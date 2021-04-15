@@ -47,7 +47,10 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	rm -rf ./liquibase
 
 	# Update package.json version w/ $LIQUIBASE_VERSION
-	# sed -i 's|\(.*"version"\): "\(.*\)",.*|\1: '"\"$LIQUIBASE_VERSION\",|" ../package.json
+	# Linux approach...
+	sed -i 's|\(.*"version"\): "\(.*\)",.*|\1: '"\"$LIQUIBASE_VERSION\",|" ../package.json
+
+	# Get npm package version number.
 	PACKAGE_VERSION=$(cat ../package.json \
   | grep version \
   | head -1 \
@@ -57,6 +60,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	echo "Version in package.json is $PACKAGE_VERSION"
 	echo "Liquibase version is $LIQUIBASE_VERSION"
 
+	# Compare NPM version number and Liquibase version.
 	if [[ "$PACKAGE_VERSION" != "$LIQUIBASE_VERSION" ]]; then
 		echo "The package.json version does not match the Liquibase version!"
 
