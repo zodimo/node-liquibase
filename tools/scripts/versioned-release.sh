@@ -1,8 +1,10 @@
-#!/bin/bash
+#! /bin/bash
+
+# RUN IT FROM ROOT PROJECT FOLDER - 'node-liquibase'
 
 # Test version argument.
 if [ -z "$1" ]; then
-  echo "A release version must be supplied (e.g. 7.0.1)."
+  echo 'A release version must be supplied (e.g. 7.0.1).'
 
   exit 1
 fi
@@ -45,7 +47,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	rm -rf ./liquibase
 
 	# Update package.json version w/ $LIQUIBASE_VERSION
-	# sed ...
+	sed -i 's|\(.*"version"\): "\(.*\)",.*|\1: '"\"$LIQUIBASE_VERSION\",|" ../package.json
 
 	echo "Done!"
 
@@ -54,7 +56,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	git add $PWD/../bin
 
 	# # Commit with the standard message.
-	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION"
+	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION" --dry-run
 else
 	# If it was NOT downloaded...
 	echo "$TARBALL_FILE_NAME was not downloaded. Please ensure that you've supplied a valid version number for a Liquibase release."
