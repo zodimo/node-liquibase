@@ -85,6 +85,9 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 		fi
 	fi
 
+	# Build the library
+	yarn build
+
 	# Add the modified files to git.
 	git add $PWD/../bin
 	git add $PWD/../package.json
