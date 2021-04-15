@@ -91,6 +91,7 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	# Add the modified files to git.
 	git add $PWD/../bin
 	git add $PWD/../package.json
+	git add $PWD/../dist
 
 	# Commit with the standard message.
 	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION"
