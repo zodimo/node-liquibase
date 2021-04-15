@@ -47,16 +47,48 @@ if [ -f "$TARBALL_FILE_NAME" ]; then
 	rm -rf ./liquibase
 
 	# Update package.json version w/ $LIQUIBASE_VERSION
-	sed -i 's|\(.*"version"\): "\(.*\)",.*|\1: '"\"$LIQUIBASE_VERSION\",|" ../package.json
+	# sed -i 's|\(.*"version"\): "\(.*\)",.*|\1: '"\"$LIQUIBASE_VERSION\",|" ../package.json
+	PACKAGE_VERSION=$(cat ../package.json \
+  | grep version \
+  | head -1 \
+  | awk -F: '{ print $2 }' \
+  | sed 's/[",]//g' \
+	| xargs)
+	echo "Version in package.json is $PACKAGE_VERSION"
+	echo "Liquibase version is $LIQUIBASE_VERSION"
+
+	if [[ "$PACKAGE_VERSION" != "$LIQUIBASE_VERSION" ]]; then
+		echo "The package.json version does not match the Liquibase version!"
+
+		printf "\n"
+		echo "Trying a different technique..."
+		sed -i '' "s/\"version\": \"1.0.1\"/\"version\": \"${LIQUIBASE_VERSION}\"/" ../package.json
+
+		# Re-Evaluate package.json version.
+		PACKAGE_VERSION=$(cat ../package.json \
+			| grep version \
+			| head -1 \
+			| awk -F: '{ print $2 }' \
+			| sed 's/[",]//g' \
+			| xargs)
+		echo "Version in package.json is $PACKAGE_VERSION"
+		echo "Liquibase version is $LIQUIBASE_VERSION"
+
+
+		if [[ "$PACKAGE_VERSION" != "$LIQUIBASE_VERSION" ]]; then
+			echo "The package.json version does not match the Liquibase version!"
+			exit 1;
+		fi
+	fi
 
 	echo "Done!"
 
-	# # Add the modified files to git.
-	echo "$PWD/../bin"
+	# Add the modified files to git.
 	git add $PWD/../bin
+	git add $PWD/../package.json
 
-	# # Commit with the standard message.
-	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION" --dry-run
+	# Commit with the standard message.
+	git commit -m "(release): updated bundled Liquibase to match release v$LIQUIBASE_VERSION"
 else
 	# If it was NOT downloaded...
 	echo "$TARBALL_FILE_NAME was not downloaded. Please ensure that you've supplied a valid version number for a Liquibase release."
