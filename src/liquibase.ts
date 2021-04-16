@@ -705,7 +705,7 @@ export class Liquibase {
 	 * @returns {Promise} Promise of a node child process.
 	 */
 	private run(action: LiquibaseCommands, params: { [key: string]: any } = {}) {
-		const paramsFromLiquibasePropertyFile = this.loadParamsFromLiquibasePropertiesFileOnDemands(this.params.liquibasePropertiesFile) as LiquibaseConfig
+		const paramsFromLiquibasePropertyFile = this.loadParamsFromLiquibasePropertiesFileOnDemands(this.params.liquibasePropertiesFile);
 		const mergedParams = {...paramsFromLiquibasePropertyFile, ...this.params}
 		const commandParamsString = this.stringifyParams(params);
 		return this.spawnChildProcess(`${this.liquibasePathAndGlobalAttributes(mergedParams)} ${action} ${commandParamsString}`);
