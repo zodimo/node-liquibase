@@ -77,7 +77,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/update.html Documentation}
 	 */
 	public update(params: UpdateCommandAttributes) {
-		return this.run(LiquibaseCommands.Update, params);
+		this.run(LiquibaseCommands.Update, params);
+		return this;
 	}
 
 	/**
@@ -90,7 +91,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/updatesql.html Documentation}
 	 */
 	public updateSQL(params: UpdateSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.UpdateSql, params);
+		this.run(LiquibaseCommands.UpdateSql, params);
+		return this;
 	}
 
 	/**
@@ -103,7 +105,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/updatecount.html Documentation}
 	 */
 	public updateCount(params: UpdateCountCommandAttributes) {
-		return this.run(LiquibaseCommands.UpdateCount, params);
+		this.run(LiquibaseCommands.UpdateCount, params);
+		return this;
 	}
 
 	/**
@@ -116,7 +119,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/updatecountsql.html Documentation}
 	 */
 	public updateCountSQL(params: UpdateCountSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.UpdateCountSql, params);
+		this.run(LiquibaseCommands.UpdateCountSql, params);
+		return this;
 	}
 
 	/**
@@ -131,7 +135,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/updatetestingrollback.html Documentation}
 	 */
 	public updateTestingRollback() {
-		return this.run(LiquibaseCommands.UpdateTestingRollback);
+		this.run(LiquibaseCommands.UpdateTestingRollback);
+		return this;
 	}
 
 	/**
@@ -144,7 +149,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/updatetotag.html Documentation}
 	 */
 	public updateToTag(params: UpdateToTagCommandAttributes) {
-		return this.run(LiquibaseCommands.UpdateToTag, params);
+		this.run(LiquibaseCommands.UpdateToTag, params);
+		return this;
 	}
 
 	/**
@@ -157,7 +163,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/updatetotagsql.html Documentation}
 	 */
 	public updateToTagSQL(params: UpdateToTagSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.UpdateToTagSql, params);
+		this.run(LiquibaseCommands.UpdateToTagSql, params);
+		return this;
 	}
 
 	/**
@@ -175,7 +182,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/validate.html Documentation}
 	 */
 	public validate() {
-		return this.run(LiquibaseCommands.Validate);
+		this.run(LiquibaseCommands.Validate);
+		return this;
 	}
 
 	/**
@@ -190,7 +198,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/calculatechecksum.html Documentation}
 	 */
 	public calculateCheckSum(params: CalculateCheckSumCommandAttributes) {
-		return this.run(LiquibaseCommands.CalculateCheckSum, params);
+		this.run(LiquibaseCommands.CalculateCheckSum, params);
+		return this;
 	}
 
 	/**
@@ -206,7 +215,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/rollbackbytag.html Documentation}
 	 */
 	public rollback(params: RollbackCommandAttributes) {
-		return this.run(LiquibaseCommands.Rollback, params);
+		this.run(LiquibaseCommands.Rollback, params);
+		return this;
 	}
 
 	/**
@@ -220,7 +230,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/rollbacksqltag.html Documentation}
 	 */
 	public rollbackSQL(params: RollbackSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.RollbackSql, params);
+		this.run(LiquibaseCommands.RollbackSql, params);
+		return this;
 	}
 
 	/**
@@ -234,7 +245,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/rollbackcount.html Documentation}
 	 */
 	public rollbackCount(params: RollbackCountCommandAttributes) {
-		return this.run(LiquibaseCommands.RollbackCount, params);
+		this.run(LiquibaseCommands.RollbackCount, params);
+		return this;
 	}
 
 	/**
@@ -249,7 +261,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/rollbackcountsql.html Documentation}
 	 */
 	public rollbackCountSQL(params: RollbackCountSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.RollbackCountSql, params);
+		this.run(LiquibaseCommands.RollbackCountSql, params);
+		return this;
 	}
 
 	/**
@@ -263,7 +276,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/rollbacktodate.html Documentation}
 	 */
 	public rollbackToDate(params: RollbackToDateCommandAttributes) {
-		return this.run(LiquibaseCommands.RollbackToDate, params);
+		this.run(LiquibaseCommands.RollbackToDate, params);
+		return this;
 	}
 
 	/**
@@ -277,7 +291,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/rollbacktodatesql.html Documentation}
 	 */
 	public rollbackToDateSQL(params: RollbackToDateSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.RollbackToDateSql, params);
+		this.run(LiquibaseCommands.RollbackToDateSql, params);
+		return this;
 	}
 
 	/**
@@ -294,7 +309,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/snapshot.html Documentation}
 	 */
 	public snapshot(params: SnapshotCommandAttributes) {
-		return this.run(LiquibaseCommands.Snapshot, params);
+		this.run(LiquibaseCommands.Snapshot, params);
+		return this;
 	}
 
 	/**
@@ -311,7 +327,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/snapshotreference.html Documentation}
 	 */
 	public snapshotReference(params: SnapshotReferenceCommandAttributes) {
-		return this.run(LiquibaseCommands.SnapshotReference, params);
+		this.run(LiquibaseCommands.SnapshotReference, params);
+		return this;
 	}
 
 	/**
@@ -324,7 +341,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/status-verbose.html Documentation}
 	 */
 	public status() {
-		return this.run(LiquibaseCommands.Status);
+		this.run(LiquibaseCommands.Status);
+		return this;
 	}
 
 	/**
@@ -343,7 +361,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/synchub.html Documentation}
 	 */
 	public syncHub(params: SyncHubCommandAttributes) {
-		return this.run(LiquibaseCommands.SyncHub, params);
+		this.run(LiquibaseCommands.SyncHub, params);
+		return this;
 	}
 
 	/**
@@ -357,7 +376,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/tag.html Documentation}
 	 */
 	public tag(params: TagCommandAttributes) {
-		return this.run(LiquibaseCommands.Tag, params);
+		this.run(LiquibaseCommands.Tag, params);
+		return this;
 	}
 
 	/**
@@ -371,7 +391,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/tagexists.html Documentation}
 	 */
 	public tagExists(params: TagExistsCommandAttributes) {
-		return this.run(LiquibaseCommands.TagExists, params);
+		this.run(LiquibaseCommands.TagExists, params);
+		return this;
 	}
 
 	/**
@@ -384,7 +405,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/unexpectedchangesets.html Documentation}
 	 */
 	public unexpectedChangeSets() {
-		return this.run(LiquibaseCommands.UnexpectedChangeSets);
+		this.run(LiquibaseCommands.UnexpectedChangeSets);
+		return this;
 	}
 
 	/**
@@ -397,7 +419,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/dropall.html Documentation}
 	 */
 	public dropAll() {
-		return this.run(LiquibaseCommands.DropAll);
+		this.run(LiquibaseCommands.DropAll);
+		return this;
 	}
 
 	/**
@@ -409,7 +432,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/futurerollbacksql.html Documentation}
 	 */
 	public futureRollbackSQL() {
-		return this.run(LiquibaseCommands.FutureRollbackSql);
+		this.run(LiquibaseCommands.FutureRollbackSql);
+		return this;
 	}
 
 	/**
@@ -423,7 +447,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/futurerollbackcountsql.html Documentation}
 	 */
 	public futureRollbackCountSQL(params: FutureRollbackCountSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.FutureRollbackCountSql, params);
+		this.run(LiquibaseCommands.FutureRollbackCountSql, params);
+		return this;
 	}
 
 	/**
@@ -437,7 +462,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/generatechangelog.html Documentation}
 	 */
 	public generateChangeLog(params: GenerateChangeLogCommandAttributes) {
-		return this.run(LiquibaseCommands.GenerateChangeLog, params);
+		this.run(LiquibaseCommands.GenerateChangeLog, params);
+		return this;
 	}
 
 	/**
@@ -459,7 +485,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/help.html Documentation}
 	 */
 	public help() {
-		return this.run(LiquibaseCommands.Help);
+		this.run(LiquibaseCommands.Help);
+		return this;
 	}
 
 	/**
@@ -470,7 +497,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/history.html Documentation}
 	 */
 	public history() {
-		return this.run(LiquibaseCommands.History);
+		this.run(LiquibaseCommands.History);
+		return this;
 	}
 
 	/**
@@ -482,7 +510,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/listlocks.html Documentation}
 	 */
 	public listLocks() {
-		return this.run(LiquibaseCommands.ListLocks);
+		this.run(LiquibaseCommands.ListLocks);
+		return this;
 	}
 
 	/**
@@ -498,7 +527,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/marknextchangesetran.html Documentation}
 	 */
 	public markNextChangeSetRan() {
-		return this.run(LiquibaseCommands.MarkNextChangeSetRan);
+		this.run(LiquibaseCommands.MarkNextChangeSetRan);
+		return this;
 	}
 
 	/**
@@ -510,7 +540,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/marknextchangesetransql.html Documentation}
 	 */
 	public markNextChangeSetRanSQL() {
-		return this.run(LiquibaseCommands.MarkNextChangeSetRanSql);
+		this.run(LiquibaseCommands.MarkNextChangeSetRanSql);
+		return this;
 	}
 
 	/**
@@ -523,7 +554,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/registerchangelog.html Documentation}
 	 */
 	public registerChangeLog() {
-		return this.run(LiquibaseCommands.RegisterChangeLog);
+		this.run(LiquibaseCommands.RegisterChangeLog);
+		return this;
 	}
 
 	/**
@@ -534,10 +566,11 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/releaselocks.html Documentation}
 	 */
 	public releaseLocks() {
-		return this.run(LiquibaseCommands.ReleaseLocks);
+		this.run(LiquibaseCommands.ReleaseLocks);
+		return this;
 	}
 
-	/*
+	/**
 	 * The `changelogSync` command marks all undeployed changes in your changelog as executed in your database.
 	 *
 	 * @description The `changelogSync` command is typically used when you want to baseline a new database environment.
@@ -548,7 +581,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/changelogsync.html Documentation}
 	 */
 	public changelogSync() {
-		return this.run(LiquibaseCommands.ChangelogSync);
+		this.run(LiquibaseCommands.ChangelogSync);
+		return this;
 	}
 
 	/**
@@ -560,7 +594,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/changelogsyncsql.html Documentation}
 	 */
 	public changelogSyncSQL() {
-		return this.run(LiquibaseCommands.ChangelogSyncSql);
+		this.run(LiquibaseCommands.ChangelogSyncSql);
+		return this;
 	}
 
 	/**
@@ -577,7 +612,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/changelogsynctotag.html Documentation}
 	 */
 	public changelogSyncToTag(params: ChangelogSyncToTagCommandAttributes) {
-		return this.run(LiquibaseCommands.ChangelogSyncToTag, params);
+		this.run(LiquibaseCommands.ChangelogSyncToTag, params);
+		return this;
 	}
 
 	/**
@@ -592,7 +628,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/changelogsynctotagsql.html Documentation}
 	 */
 	public changelogSyncToTagSQL(params: ChangelogSyncToTagSQLCommandAttributes) {
-		return this.run(LiquibaseCommands.ChangelogSyncToTagSql, params);
+		this.run(LiquibaseCommands.ChangelogSyncToTagSql, params);
+		return this;
 	}
 
 	/**
@@ -603,7 +640,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/clearchecksums.html Documentation}
 	 */
 	public clearCheckSums() {
-		return this.run(LiquibaseCommands.ClearCheckSums);
+		this.run(LiquibaseCommands.ClearCheckSums);
+		return this;
 	}
 
 	/**
@@ -617,7 +655,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/dbdoc.html Documentation}
 	 */
 	public dbDoc(params: DbDocCommandAttributes) {
-		return this.run(LiquibaseCommands.DbDoc, params);
+		this.run(LiquibaseCommands.DbDoc, params);
+		return this;
 	}
 
 	/**
@@ -631,7 +670,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/deactivatechangelog.html Documentation}
 	 */
 	public deactivateChangeLog() {
-		return this.run(LiquibaseCommands.DeactivateChangeLog);
+		this.run(LiquibaseCommands.DeactivateChangeLog);
+		return this;
 	}
 
 	/**
@@ -648,7 +688,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/diff.html Documentation}
 	 */
 	public diff(params: DiffCommandAttributes) {
-		return this.run(LiquibaseCommands.Diff, params);
+		this.run(LiquibaseCommands.Diff, params);
+		return this;
 	}
 
 	/**
@@ -666,7 +707,8 @@ export class Liquibase {
 	 * {@link https://docs.liquibase.com/commands/community/diffchangelog.html Documentation}
 	 */
 	public diffChangelog(params: DiffChangelogCommandAttributes) {
-		return this.run(LiquibaseCommands.DiffChangeLog, params);
+		this.run(LiquibaseCommands.DiffChangeLog, params);
+		return this;
 	}
 
 	private stringifyParams(params: { [key: string]: any }) {
