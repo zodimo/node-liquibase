@@ -124,6 +124,8 @@ With the new package you can will get:
 * Liquibase command Parameter documentation
 * Liquibase CLI Command API Parity
 
+https://user-images.githubusercontent.com/32392635/115454680-ac49cd80-a1e6-11eb-85fa-df91caf4a7f6.mp4
+
 ### Library and CLI
 In order to keep the DX as smooth as possible without deprecating the project that inspired the re-write, we've provided both an NPM package and a CLI tool. We did this by transpiling both an ES Module and a Common JS module in the dist code. The Node CLI of this package can be used with `node-liquibase`.
 
