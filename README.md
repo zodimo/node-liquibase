@@ -1,8 +1,8 @@
 ![Website](https://img.shields.io/website?color=%233090C7&up_message=liquibase.org&url=https%3A%2F%2Fwww.liquibase.org%2F)
 ![Website](https://img.shields.io/website?color=%233090C7&label=docs&up_message=docs.liquibase.com&url=https%3A%2F%2Fdocs.liquibase.com%2F)
 ![Twitter Follow](https://img.shields.io/twitter/follow/liquibase?style=social)
-![npm](https://img.shields.io/npm/dt/liquibase?label=total%20downloads)
-![npm](https://img.shields.io/npm/dw/liquibase?label=weekly%20downloads)
+![NPM](https://img.shields.io/NPM/dt/liquibase?label=total%20downloads)
+![NPM](https://img.shields.io/NPM/dw/liquibase?label=weekly%20downloads)
 ![GitHub repo size](https://img.shields.io/github/repo-size/liquibase/node-liquibase?logo=GitHub&style=flat-square)
 
 ---
@@ -16,19 +16,28 @@
 [5]: https://www.youtube.com/channel/UC5qMsRjObu685rTBq0PJX8w
 
 ![Node and Liquibase](/docs/assets/node-liquibase.png)
-Use Node.js and databases? Want to do smart architecture decisions? Do not invent wheel, use Liquibase.
+Use Node and databases? Want to do smart architecture decisions? Do not invent wheel, use Liquibase.
 Liquibase is an open-source database-independent library for tracking, managing and applying database schema changes.
 
 ## Installation
 
-There is an easy way to integrate Liquibase power to Node.js application. All you need
-is npm package.
+There is an easy way to integrate Liquibase power to Node application. All you need
+is NPM package.
 
-`$ npm install --save liquibase`
+```bash
+yarn add liquibase
+```
+
+or:
+```bash
+$ NPM install --save liquibase
+```
 
 ## Usage
 
 Liquibase support rich pool of commands to keep your database up-to-date, like update, rollback, diff check out full list here: https://docs.liquibase.com/commands/home.html.
+
+This package exposes both a CLI tool and a Library to help you in your Database Migration efforts!
 
 ### CLI
 
@@ -116,32 +125,15 @@ With the new package you can will get:
 * Liquibase CLI Command API Parity
 
 ### Library and CLI
+In order to keep the DX as smooth as possible without deprecating the project that inspired the re-write, we've provided both an NPM package and a CLI tool. We did this by transpiling both an ES Module and a Common JS module in the dist code. The Node CLI of this package can be used with `node-liquibase`.
+
+However, when importing the modules to use them in a JavaScript or TypeScript file, be sure to import from the correct module name: `liquibase`. We are forced to keep this package name for now due to dependent projects.
+
 ### Liquibase CLI Command API Parity
-### Chainable Commands
-A relatively common pattern is to return `this` on a method to allow for 'method chaining'.
+We were careful to ensure that all 'top level' Liquibase commands are implemented in this package. No more magic strings!
 
-#### Example
-```typescript
-import {
-	LiquibaseConfig,
-	Liquibase,
-	POSTGRESQL_DEFAULT_CONFIG,
-} from 'node-liquibase';
+[Here's a complete listing]('./src/enums/liquibase-commands.enum.ts') of commands that have been implemented.
 
-const myConfig: LiquibaseConfig = {
-	...POSTGRESQL_DEFAULT_CONFIG,
-	url: 'jdbc:postgresql://localhost:5432/node_liquibase_testing',
-	username: 'yourusername',
-	password: 'yoursecurepassword',
-};
-const instance = new Liquibase(myConfig);
-
-async function doEet() {
-
-}
-
-doEet();
-```
 ### Liquibase CLI Peer Dependency (Optional)
 
 ## WTR!? (Why The Re-write!?)
