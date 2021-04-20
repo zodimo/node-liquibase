@@ -680,19 +680,27 @@ export class Liquibase {
 		return commandString;
 	}
 
-	private loadParamsFromLiquibasePropertiesFileOnDemands(liquibasePropertyPath?: string): LiquibaseConfig {
-		let paramsFromLiquibasePropertyFile = {} as LiquibaseConfig
-		if (liquibasePropertyPath) {
-			const fileContent = FileHelper.readFileContent(liquibasePropertyPath);
-			fileContent.split(/\r?\n/).forEach(line => {
-				const pair = line.split(/=?:/, 2)
-				if (paramsFromLiquibasePropertyFile.hasOwnProperty(pair[0])) {
-					paramsFromLiquibasePropertyFile[pair[0].trim()] = pair[1].trim()
-				}
-			})
-			return paramsFromLiquibasePropertyFile
+	private loadParamsFromLiquibasePropertiesFileOnDemands(liquibasePropertyPath?: string): LiquibaseConfig | undefined {
+		let paramsFromLiquibasePropertyFile: { [key: string]: string } = {};
+
+		if (!liquibasePropertyPath) {
+			return;
 		}
-		return paramsFromLiquibasePropertyFile;
+
+		const fileContents = FileHelper.readFileContent(liquibasePropertyPath);
+		const fileContentsLines = fileContents.split(/\r?\n/);
+
+		fileContentsLines.forEach(line => {
+			const keyValuePair = line.split(/=?:/, 2);
+			const key = keyValuePair[0];
+			const value = keyValuePair[1];
+
+			if (paramsFromLiquibasePropertyFile.hasOwnProperty(key)) {
+				paramsFromLiquibasePropertyFile[key.trim()] = value.trim();
+			}
+		});
+
+		return paramsFromLiquibasePropertyFile as any as LiquibaseConfig;
 	}
 
 	/**
@@ -706,7 +714,7 @@ export class Liquibase {
 	 */
 	private run(action: LiquibaseCommands, params: { [key: string]: any } = {}) {
 		const paramsFromLiquibasePropertyFile = this.loadParamsFromLiquibasePropertiesFileOnDemands(this.params.liquibasePropertiesFile);
-		const mergedParams = {...paramsFromLiquibasePropertyFile, ...this.params}
+		const mergedParams = { ...paramsFromLiquibasePropertyFile, ...this.params }
 		const commandParamsString = this.stringifyParams(params);
 		return this.spawnChildProcess(`${this.liquibasePathAndGlobalAttributes(mergedParams)} ${action} ${commandParamsString}`);
 	}

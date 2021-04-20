@@ -1,5 +1,5 @@
 import { join } from 'path';
-import * as fs from 'fs';
+import { readFileSync } from 'fs';
 
 export class FileHelper {
 	public static get bundledLiquibasePath() {
@@ -21,14 +21,6 @@ export class FileHelper {
 	}
 
 	public static readFileContent(absolutePathToPropertyFile: string): string {
-		let fileContent;
-		fs.readFile(absolutePathToPropertyFile, 'utf8' , (err, data) => {
-			if (err) {
-				//TODO: add logging of error or warn message
-				return;
-			}
-			fileContent = data;
-		})
-		return fileContent;
+		return readFileSync(absolutePathToPropertyFile, { encoding: 'utf-8' });
 	}
 }
