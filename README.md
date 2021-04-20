@@ -19,6 +19,25 @@
 Use Node and databases? Want to do smart architecture decisions? Do not invent wheel, use Liquibase.
 Liquibase is an open-source database-independent library for tracking, managing and applying database schema changes.
 
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+  * [CLI](#cli)
+  * [In Your Project Files](#in-your-project-files)
+* [Features](#features)
+  * [TypeScript](#typescript)
+  * [Library and CLI](#library-and-cli)
+  * [Liquibase CLI Command API Parity](#liquibase-cli-command-api-parity)
+  * [Liquibase CLI Peer Dependency](#liquibase-cli-peer-dependency-(optional))
+  * [WTR!?](#wtr!?-why-the-re-write-!?)
+* [Want to Help?](#want-to-help)
+  * [Build](#build)
+  * [Tests](#tests)
+  * [Env Vars](#env-vars)
+* [Getting More Knowledge About Liquibase](#getting-more-knowledge-about-liquibase)
+* [Liquibase CLI](#liquibase-cli)
+
+
 ## Installation
 
 There is an easy way to integrate Liquibase power to Node application. All you need
@@ -137,6 +156,7 @@ We were careful to ensure that all 'top level' Liquibase commands are implemente
 [Here's a complete listing]('./src/enums/liquibase-commands.enum.ts') of commands that have been implemented.
 
 ### Liquibase CLI Peer Dependency (Optional)
+WIP
 
 ## WTR!? (Why The Re-write!?)
 The original fork of this project has been left intact to give credit where credit is due. As an Organization, Liquibase can be summarized as follows: No punks, no jerks. Because of this, we cannot ignore [pablodenadai/node-liquibase](https://github.com/pablodenadai/node-liquibase). It was these efforts that ultimately led to the decision to improve on that project.
@@ -187,7 +207,7 @@ yarn test
 
 To substitute your own user/pass for a given environment, make a copy of `.env.example` in root directory as `.env` and update accordingly.
 
-## Getting More Knowledge About Liquibase:
+## Getting More Knowledge About Liquibase
 
 - [Liquibase University](https://learn.liquibase.com/index)
 - [Liquibase Documentation](https://docs.liquibase.com/home.html)
