@@ -115,6 +115,8 @@ With the new package you can will get:
 * Liquibase command Parameter documentation
 * Liquibase CLI Command API Parity
 
+https://user-images.githubusercontent.com/32392635/115454680-ac49cd80-a1e6-11eb-85fa-df91caf4a7f6.mp4
+
 ### Library and CLI
 ### Liquibase CLI Command API Parity
 ### Chainable Commands
