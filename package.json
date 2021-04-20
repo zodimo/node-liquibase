@@ -1,24 +1,29 @@
 {
-  "name": "liquibase",
-  "version": "1.0.1",
+  "name": "node-liquibase",
+  "version": "2.0.0",
   "description": "Node.js wrapper for Liquibase",
-  "main": "lib/index.js",
+  "bin": {
+    "node-liquibase": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "module": "dist/node-liquibase-ts.esm.js",
+  "typings": "dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "build:lib": "npm run build:js && npm run copy:dependencies",
-    "build:js": "babel src --out-dir lib",
-    "watch:js": "babel src --out-dir lib --watch",
-    "copy:dependencies": "npm run copy:liquibase && npm run copy:drivers && npm run copy:change-log-examples",
-    "copy:liquibase": "ncp ./src/liquibase-4.0.0 ./lib/liquibase-4.0.0",
-    "copy:drivers": "ncp ./src/Drivers ./lib/Drivers",
-    "copy:change-log-examples": "ncp ./src/change-log-examples ./lib/change-log-examples",
-    "clean:lib": "rimraf ./lib/**",
-    "start": "npm run build && npm run watch:lib",
-    "watch:lib": "nodemon lib/index.js",
-    "test": "nyc --report-dire=coverage --reporter=lcov ava ",
-    "semantic-release": "semantic-release"
+    "start": "tsdx watch",
+    "build": "yarn build:library && yarn build:cli && yarn copy:dependencies",
+    "build:library": "tsdx build",
+    "build:cli": "yarn tsup ./src/cli.ts",
+    "test": "tsdx test",
+    "test:watch": "yarn jest --watchAll",
+    "lint": "tsdx lint",
+    "copy:dependencies": "yarn copy:liquibase && yarn copy:drivers",
+    "copy:liquibase": "ncp ./bin/liquibase ./dist/liquibase",
+    "copy:drivers": "ncp ./drivers ./dist/drivers",
+    "semantic-release": "semantic-release",
+    "tsup": "tsup"
   },
   "engines": {
     "node": ">=6.9.0"
@@ -39,35 +44,36 @@
     "postgresql",
     "migration"
   ],
-  "author": "liquibase",
+  "author": "tabuckner",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/liquibase/node-liquibase/issues"
   },
   "homepage": "https://github.com/liquibase/node-liquibase#readme",
-  "devDependencies": {
-    "@ava/babel": "^1.0.1",
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@semantic-release/git": "^9.0.0",
-    "ava": "^3.8.1",
-    "dotenv": "^8.2.0",
-    "esm": "^3.2.25",
-    "ncp": "^2.0.0",
-    "nodemon": "^2.0.3",
-    "nyc": "^15.0.1",
-    "rimraf": "^3.0.2",
-    "semantic-release": "^17.0.7"
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
-  "dependencies": {},
-  "ava": {
-    "nodeArguments": [
-      "--experimental-modules"
-    ],
-    "require": [
-      "esm"
-    ]
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^9.0.0",
+    "@types/jest": "^26.0.22",
+    "dotenv": "^8.2.0",
+    "husky": "^6.0.0",
+    "ncp": "^2.0.0",
+    "semantic-release": "^17.4.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "tsup": "^4.8.21",
+    "typescript": "^4.2.4",
+    "yarn": "^1.22.10"
   },
   "release": {
     "branches": [

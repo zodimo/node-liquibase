@@ -64,7 +64,7 @@ liquibase(config)
 
 // liquibase({
 //   url: '"jdbc:sqlserver://localhost;database=HR_TEST;"',
-//   classpath: 'Drivers/mssql-jdbc-7.4.1.jre8.jar',
+//   classpath: 'drivers/mssql-jdbc-7.4.1.jre8.jar',
 //   username: 'system',
 //   password: 'password',
 //   overwriteOutputFile: 'true',
@@ -79,7 +79,7 @@ liquibase(config)
 // liquibase({
 //   changeLogFile: 'change-log-examples/mssql/changelog.mssql.sql',
 //   url: '"jdbc:sqlserver://localhost;database=HR_TEST;"',
-//   classpath: 'Drivers/mssql-jdbc-7.4.1.jre8.jar',
+//   classpath: 'drivers/mssql-jdbc-7.4.1.jre8.jar',
 //   username: 'system',
 //   password: 'password',
 //   logLevel: 'debug',
