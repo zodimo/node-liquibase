@@ -1,4 +1,5 @@
 import { join } from 'path';
+import { readFileSync } from 'fs';
 
 export class FileHelper {
 	public static get bundledLiquibasePath() {
@@ -17,5 +18,9 @@ export class FileHelper {
 	public static get bundledLiquibasePathForInternalConsumers(): string {
 		const liquibaseExecutablePath = join(__dirname, '../../bin/liquibase/liquibase');
 		return liquibaseExecutablePath;
+	}
+
+	public static readFileContent(absolutePathToPropertyFile: string): string {
+		return readFileSync(absolutePathToPropertyFile, { encoding: 'utf-8' });
 	}
 }

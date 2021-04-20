@@ -711,7 +711,7 @@ export class Liquibase {
 		return this;
 	}
 
-	private stringifyParams(params: { [key: string]: any }) {
+	private stringifyParams(params: { [key: string]: any }): string {
 		let commandString = '';
 
 		for (const property in params) {
@@ -720,6 +720,29 @@ export class Liquibase {
 		}
 
 		return commandString;
+	}
+
+	private loadParamsFromLiquibasePropertiesFileOnDemands(liquibasePropertyPath?: string): LiquibaseConfig | undefined {
+		let paramsFromLiquibasePropertyFile: { [key: string]: string } = {};
+
+		if (!liquibasePropertyPath) {
+			return;
+		}
+
+		const fileContents = FileHelper.readFileContent(liquibasePropertyPath);
+		const fileContentsLines = fileContents.split(/\r?\n/);
+
+		fileContentsLines.forEach(line => {
+			const keyValuePair = line.split(/=?:/, 2);
+			const key = keyValuePair[0];
+			const value = keyValuePair[1];
+
+			if (paramsFromLiquibasePropertyFile.hasOwnProperty(key)) {
+				paramsFromLiquibasePropertyFile[key.trim()] = value.trim();
+			}
+		});
+
+		return paramsFromLiquibasePropertyFile as any as LiquibaseConfig;
 	}
 
 	/**
@@ -732,19 +755,21 @@ export class Liquibase {
 	 * @returns {Promise} Promise of a node child process.
 	 */
 	private run(action: LiquibaseCommands, params: { [key: string]: any } = {}) {
-		const paramString = this.stringifyParams(params);
-		return this.spawnChildProcess(`${this.liquibasePathAndGlobalAttributes} ${action} ${paramString}`);
+		const paramsFromLiquibasePropertyFile = this.loadParamsFromLiquibasePropertiesFileOnDemands(this.params.liquibasePropertiesFile);
+		const mergedParams = { ...paramsFromLiquibasePropertyFile, ...this.params }
+		const commandParamsString = this.stringifyParams(params);
+		return this.spawnChildProcess(`${this.liquibasePathAndGlobalAttributes(mergedParams)} ${action} ${commandParamsString}`);
 	}
 
 	/**
-	 * Internal Getter that returns a node child process compatible command string.
+	 * Internal method that returns a node child process compatible command string.
 	 * @returns {string}
 	 * @private
 	 */
-	private get liquibasePathAndGlobalAttributes() {
-		let liquibasePathAndGlobalAttributes = `${this.params.liquibase}`;
-		Object.keys(this.params).forEach(key => {
-			if (key === 'liquibase') {
+	private liquibasePathAndGlobalAttributes(params: LiquibaseConfig) {
+		let liquibasePathAndGlobalAttributes = `${params.liquibase}`;
+		Object.keys(params).forEach(key => {
+			if (key === 'liquibase' || key == 'liquibasePropertiesFile') {
 				return;
 			}
 			const value = (this.params as { [key: string]: any })[key];
