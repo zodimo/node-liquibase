@@ -1,7 +1,7 @@
-import {exec} from 'child_process';
+import { exec } from 'child_process';
 
 export class CommandHandler {
-	public static spawnChildProcess(commandString: string) {
+	public static spawnChildProcess(commandString: string): Promise<string> {
 		console.log(`Running ${commandString}...`);
 		return new Promise((resolve, reject) => {
 			exec(commandString, (error, stdout, stderr) => {
