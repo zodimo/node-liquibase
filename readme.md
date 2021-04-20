@@ -1,8 +1,8 @@
 ![Website](https://img.shields.io/website?color=%233090C7&up_message=liquibase.org&url=https%3A%2F%2Fwww.liquibase.org%2F)
 ![Website](https://img.shields.io/website?color=%233090C7&label=docs&up_message=docs.liquibase.com&url=https%3A%2F%2Fdocs.liquibase.com%2F)
-![Twitter URL](https://img.shields.io/twitter/url?label=follow%20%40liquibase&style=social&url=https%3A%2F%2Ftwitter.com%2Fliquibase)
-![GitHub all releases](https://img.shields.io/github/downloads/liquibase/node-liquibase/total?logo=GitHub&style=flat-square)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/liquibase/node-liquibase?logo=GitHub)
+![Twitter Follow](https://img.shields.io/twitter/follow/liquibase?style=social)
+![npm](https://img.shields.io/npm/dt/liquibase?label=total%20downloads)
+![npm](https://img.shields.io/npm/dw/liquibase?label=weekly%20downloads)
 ![GitHub repo size](https://img.shields.io/github/repo-size/liquibase/node-liquibase?logo=GitHub&style=flat-square)
 
 Use Node.js and databases? Want to do smart architecture decisions? Do not invent wheel, use Liquibase.
