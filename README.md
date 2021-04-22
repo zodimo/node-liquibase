@@ -15,6 +15,8 @@
 [4]: https://github.com/liquibase/liquibase
 [5]: https://www.youtube.com/channel/UC5qMsRjObu685rTBq0PJX8w
 
+# **NOTE:** This is the `@pd` or peer dependency version of this package. Please be sure to update your configurations accordingly to ensure that any drivers, or liquibase executables are made known to `node-liquibase`. [Read More](#peer-dependency-@pd).
+
 ![Node and Liquibase](/docs/assets/node-liquibase.png)
 Use Node and databases? Want to do smart architecture decisions? Do not invent wheel, use Liquibase.
 Liquibase is an open-source database-independent library for tracking, managing and applying database schema changes.
@@ -277,6 +279,9 @@ yarn node-liquibase --changeLogFile="changelog.xml" --url="jdbc:postgresql://loc
 ```bash
 yarn node-liquibase --liquibase="Users/me/absolute/path/to/executable/directory" --changeLogFile="changelog.xml" --url="jdbc:postgresql://localhost:5432/node_liquibase_testing" --username="yourusername" --password="yoursecurepassword" --classpath="/Users/me/path/to/my/db-drivers/postgresql-42.2.8.jar" status
 ```
+
+### Sandbox: @pd
+If you'd like to see a working setup of `liquibase@pd` be sure to check out the `peer-dependency` branch of the [Node Liquibase Sandbox](https://github.com/tabuckner/node-liquibase-sandbox/blob/peer-dependency/index.ts). You can see a diff of the two approaches (Bundled v. Peer) [Here](https://github.com/tabuckner/node-liquibase-sandbox/compare/master...peer-dependency)
 
 ## Want to Help?
 
