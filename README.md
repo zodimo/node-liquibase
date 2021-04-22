@@ -227,6 +227,8 @@ npm i liquibase@pd
 
 Depending on your implementation method of choice (TS, JS, or CLI), you will need to let `node-liquibase` know where it can find your `liquibase` executable. This should be an **absolute path** to the executable.
 
+Additionally, we removed the bundled drivers from the `@pd` release to further reduce the size of your `node_modules`. There is a chance you will need to update your configurations to provide an absolute path on the `classpath` property to the drivers you need.
+
 ### Configuration Updates (TS or JS)
 Using the `liquibase` property on your config object.
 
