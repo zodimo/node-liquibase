@@ -21,6 +21,7 @@ Liquibase is an open-source database-independent library for tracking, managing 
 
 ## Table of Contents
 * [Installation](#installation)
+* [Sandbox](#sandbox)
 * [Usage](#usage)
   * [CLI](#cli)
   * [In Your Project Files](#in-your-project-files)
@@ -52,6 +53,13 @@ or:
 $ NPM install --save liquibase
 ```
 
+### Sandbox
+> "If this isn't making sense, it doesn't make it lies." (Cornell, 1994).
+
+We have also provided a [Small Sandbox Project](https://github.com/tabuckner/node-liquibase-sandbox) where you can easily evaluate [Liquibase](https://github.com/liquibase/liquibase) and `node-liquibase` against a Postgres Database.
+
+The Sandbox project includes startup scripts, and examples to demonstrate how to use `node-liquibase` in TypeScript, JavaScript, and as a CLI tool.
+
 ## Usage
 
 Liquibase support rich pool of commands to keep your database up-to-date, like update, rollback, diff check out full list here: https://docs.liquibase.com/commands/home.html.
@@ -66,7 +74,7 @@ You can use this NPM package as a CLI tool under the namespace `node-liquibase` 
 
 ```bash
 node-liquibase
---changeLogFile="/examples/change-log-examples/postgreSQL/changelog.xml"
+--changeLogFile="/path/to/my/changelog.xml"
 --url="jdbc:postgresql://localhost:5432/postgres"
 --username="yourusername"
 --password="yoursecurepassword"
@@ -78,7 +86,7 @@ status
 
 ```bash
 node-liquibase /Users/taylor/Dev/Liquibase/hackathons/node-liquibase/bin/liquibase/liquibase
- --changeLogFile="/examples/change-log-examples/postgreSQL/changelog.xml"
+ --changeLogFile="/path/to/my/changelog.xml"
  --url="jdbc:postgresql://localhost:5432/postgres"
  --username="yourusername"
  --password="yoursecurepassword"
