@@ -1,3 +1,5 @@
+import { LiquibaseLogLevels } from "../enums";
+
 export interface LiquibaseConfig {
 	/**
    * Absolute path to your Liquibase executable.
@@ -54,4 +56,8 @@ export interface LiquibaseConfig {
    */
   referencePassword?: string;
 
+	/**
+	 * The `logLevel parameter controls the amount of messages that are generated when running Liquibase commands
+	 */
+	logLevel?: LiquibaseLogLevels;
 }
