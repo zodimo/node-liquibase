@@ -747,7 +747,7 @@ export class Liquibase {
   private liquibasePathAndGlobalAttributes(params: LiquibaseConfig) {
     let liquibasePathAndGlobalAttributes = `${params.liquibase}`;
     Object.keys(params).forEach(key => {
-      if (key === 'liquibase' || key == 'liquibasePropertiesFile') {
+      if (key === 'liquibase' || key === 'liquibasePropertiesFile') {
         return;
       }
       const value = (this.config as { [key: string]: any })[key];
