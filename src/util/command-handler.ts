@@ -3,7 +3,7 @@ import { LiquibaseConfig } from '../models';
 import { Logger } from '../util';
 
 export class CommandHandler {
-	logger: Logger;
+	private logger: Logger;
 
 	constructor(config: LiquibaseConfig) {
 		this.logger = new Logger(config);
