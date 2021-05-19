@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import { LiquibaseConfig } from 'models';
+import { LiquibaseConfig } from '../models';
 import { Logger } from '../util';
 
 export class CommandHandler {
@@ -11,14 +11,17 @@ export class CommandHandler {
 
 	public spawnChildProcess(commandString: string): Promise<string> {
 		this.logger.log(`Running ${commandString}...`);
+
 		return new Promise((resolve, reject) => {
 			exec(commandString, (error, stdout, stderr) => {
 				this.logger.log(`\n ${stdout}`);
+
 				if (error) {
 					this.logger.error(`\n ${stderr}`);
 					// error.stderr = stderr;
 					return reject(error);
 				}
+
 				resolve(stdout);
 			});
 		});

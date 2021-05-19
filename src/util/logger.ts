@@ -1,6 +1,6 @@
 import { LiquibaseLogLevels } from '../enums';
 import { LIQUIBASE_LABEL } from '../constants';
-import { LiquibaseConfig } from 'models';
+import { LiquibaseConfig } from '../models';
 
 export class Logger {
 	constructor(
@@ -21,25 +21,31 @@ export class Logger {
 
 	private _log(message: string) {
 		const levels = [LiquibaseLogLevels.Debug, LiquibaseLogLevels.Info, LiquibaseLogLevels.Severe, LiquibaseLogLevels.Warning];
+
 		if (!this.shouldOperate(levels)) {
 			return;
 		}
+
 		return console.log(`${LIQUIBASE_LABEL} ${message}`);
 	}
 
 	private _warn(message: string) {
 		const levels = [LiquibaseLogLevels.Severe, LiquibaseLogLevels.Warning];
+
 		if (!this.shouldOperate(levels)) {
 			return;
 		}
+
 		return console.warn('\x1b[33m%s\x1b[0m', `${LIQUIBASE_LABEL} ${message}`);
 	}
 
 	private _error(message: string) {
 		const levels = [LiquibaseLogLevels.Severe];
+
 		if (!this.shouldOperate(levels)) {
 			return;
 		}
+
 		return console.error('\x1b[31m%s\x1b[0m', `${LIQUIBASE_LABEL} ${message}`);
 	}
 
@@ -51,6 +57,7 @@ export class Logger {
 		if (process.env.NODE_ENV === 'test') {
 			return LiquibaseLogLevels.Off;
 		}
+
 		return this.config?.logLevel || LiquibaseLogLevels.Severe;
 	}
 }
