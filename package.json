@@ -17,7 +17,7 @@
     "build:library": "tsdx build",
     "build:cli": "yarn tsup ./src/cli.ts",
     "test": "tsdx test",
-    "test:watch": "yarn jest --watchAll",
+    "test:watch": "yarn test --watchAll",
     "lint": "tsdx lint",
     "copy:dependencies": "yarn copy:liquibase && yarn copy:drivers",
     "copy:liquibase": "ncp ./bin/liquibase ./dist/liquibase",
