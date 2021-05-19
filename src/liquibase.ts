@@ -35,10 +35,11 @@ import { CommandsWithPositionalArguments } from './enums/commands-with-positiona
 
 
 export class Liquibase {
+	private commandHandler: CommandHandler;
 	/**
 	 * @description Returns an instance of a lightweight Liquibase Wrapper.
 	 *
-	 * @param params Configuration for an instance of `Liquibase`
+	 * @param config Configuration for an instance of `Liquibase`
 	 *
 	 * * @example
 	 * ```javascript
@@ -59,9 +60,10 @@ export class Liquibase {
 	 * ```
 	 */
 	constructor(
-		private params: LiquibaseConfig,
+		private config: LiquibaseConfig,
 	) {
-		this.mergeParamsWithDefaults(params);
+		this.mergeConfigWithDefaults(config);
+		this.commandHandler = new CommandHandler(this.config);
 	}
 
 	/**
@@ -721,8 +723,8 @@ export class Liquibase {
 	 * @returns {Promise} Promise of a node child process.
 	 */
 	private run(action: LiquibaseCommands, params: { [key: string]: any } = {}) {
-		const paramsFromLiquibasePropertyFile = this.loadParamsFromLiquibasePropertiesFileOnDemands(this.params.liquibasePropertiesFile);
-		const mergedParams = { ...paramsFromLiquibasePropertyFile, ...this.params }
+		const paramsFromLiquibasePropertyFile = this.loadParamsFromLiquibasePropertiesFileOnDemands(this.config.liquibasePropertiesFile);
+		const mergedParams = { ...paramsFromLiquibasePropertyFile, ...this.config }
 		const commandParamsString = this.stringifyParams(action, params);
 		return this.spawnChildProcess(`${this.liquibasePathAndGlobalAttributes(mergedParams)} ${action} ${commandParamsString}`);
 	}
@@ -738,7 +740,7 @@ export class Liquibase {
 			if (key === 'liquibase' || key == 'liquibasePropertiesFile') {
 				return;
 			}
-			const value = (this.params as { [key: string]: any })[key];
+			const value = (this.config as { [key: string]: any })[key];
 			liquibasePathAndGlobalAttributes = `${liquibasePathAndGlobalAttributes} --${key}="${value}"`;
 		});
 		return liquibasePathAndGlobalAttributes;
@@ -750,21 +752,21 @@ export class Liquibase {
 	 * @param {*} commandString Liquibase commandString
 	 */
 	private spawnChildProcess(commandString: string): Promise<string> {
-		return CommandHandler.spawnChildProcess(commandString);
+		return this.commandHandler.spawnChildProcess(commandString);
 	}
 
 	/**
 	 * For now, we will assume Postgres is the 'default' database type.
 	 * In the future we can be smarter about how we merge these configs.
 	 *
-	 * @param params User Provided `LiquibaseConfig`
+	 * @param config User Provided `LiquibaseConfig`
 	 */
-	private mergeParamsWithDefaults(params: LiquibaseConfig) {
+	private mergeConfigWithDefaults(config: LiquibaseConfig) {
 		const defaults: LiquibaseConfig = {
 			...POSTGRESQL_DEFAULT_CONFIG,
 			liquibase: FileHelper.bundledLiquibasePath,
 		}
-		this.params = Object.assign({}, defaults, params);
+		this.config = Object.assign({}, defaults, config);
 	}
 
 	/**

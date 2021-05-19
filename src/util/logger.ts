@@ -1,53 +1,63 @@
 import { LiquibaseLogLevels } from '../enums';
 import { LIQUIBASE_LABEL } from '../constants';
+import { LiquibaseConfig } from '../models';
 
 export class Logger {
-	constructor() { }
+	constructor(
+		private config: LiquibaseConfig
+	) { }
 
-	public static log(message: string): void {
+	public log(message: string): void {
 		return this._log(message);
 	}
 
-	public static warn(message: string): void {
+	public warn(message: string): void {
 		return this._warn(message);
 	}
 
-	public static error(message: string): void {
+	public error(message: string): void {
 		return this._error(message);
 	}
 
-	private static _log(message: string) {
+	private _log(message: string) {
 		const levels = [LiquibaseLogLevels.Debug, LiquibaseLogLevels.Info, LiquibaseLogLevels.Severe, LiquibaseLogLevels.Warning];
+
 		if (!this.shouldOperate(levels)) {
 			return;
 		}
+
 		return console.log(`${LIQUIBASE_LABEL} ${message}`);
 	}
 
-	private static _warn(message: string) {
+	private _warn(message: string) {
 		const levels = [LiquibaseLogLevels.Severe, LiquibaseLogLevels.Warning];
+
 		if (!this.shouldOperate(levels)) {
 			return;
 		}
+
 		return console.warn('\x1b[33m%s\x1b[0m', `${LIQUIBASE_LABEL} ${message}`);
 	}
 
-	private static _error(message: string) {
+	private _error(message: string) {
 		const levels = [LiquibaseLogLevels.Severe];
+
 		if (!this.shouldOperate(levels)) {
 			return;
 		}
+
 		return console.error('\x1b[31m%s\x1b[0m', `${LIQUIBASE_LABEL} ${message}`);
 	}
 
-	private static shouldOperate(acceptableLogLevels: Array<LiquibaseLogLevels>) {
+	private shouldOperate(acceptableLogLevels: Array<LiquibaseLogLevels>) {
 		return acceptableLogLevels.indexOf(this.logLevel) > -1;
 	}
 
-	private static get logLevel() {
+	private get logLevel() {
 		if (process.env.NODE_ENV === 'test') {
 			return LiquibaseLogLevels.Off;
 		}
-		return LiquibaseLogLevels.Severe;
+
+		return this.config?.logLevel || LiquibaseLogLevels.Severe;
 	}
 }
