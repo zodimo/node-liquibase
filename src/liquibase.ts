@@ -37,26 +37,33 @@ import { CommandsWithPositionalArguments } from './enums/commands-with-positiona
 export class Liquibase {
 	private commandHandler: CommandHandler;
 	/**
-	 * @description Returns an instance of a lightweight Liquibase Wrapper.
+	 * @description Returns an instance of a lightweight Node wrapper for Liquibase.
 	 *
 	 * @param config Configuration for an instance of `Liquibase`
 	 *
 	 * * @example
-	 * ```javascript
-	 * const liquibase = require('node-liquibase');
+	 * ```typescript
+	 * import {
+	 * 	LiquibaseConfig,
+	 * 	Liquibase,
+	 * 	POSTGRESQL_DEFAULT_CONFIG,
+	 * } from 'node-liquibase';
 	 *
-	 * const config = {
-	 *   contexts: 'TEST,DEV',
-	 *   labels: 'staging,Jira-1200',
-	 *   logLevel: 'debug',
-	 *   overwriteOutputFile: 'true',
-	 *   logFile: 'myLog.log'
+	 * const myConfig: LiquibaseConfig = {
+	 * 	...POSTGRESQL_DEFAULT_CONFIG,
+	 * 	url: 'jdbc:postgresql://localhost:5432/node_liquibase_testing',
+	 * 	username: 'yourusername',
+	 * 	password: 'yoursecurepassword',
 	 * };
+	 * const instance = new Liquibase(myConfig);
 	 *
-	 * liquibase(config)
-	 *   .run('status', '--verbose')
-	 *   .then(() => console.log('success'))
-	 *   .catch((err) => console.error('fail', err));
+	 * async function doEet() {
+	 * 	await instance.status();
+	 * 	// await instance.update();
+	 * 	// await instance.dropAll();
+	 * }
+	 *
+	 * doEet();
 	 * ```
 	 */
 	constructor(
