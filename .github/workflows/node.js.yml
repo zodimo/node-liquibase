@@ -48,5 +48,7 @@ jobs:
 
     # Install dependencies
     - run: yarn --frozen-lockfile
-    # Run tests
+    # Run Linters
+    - run: yarn lint
+    # Run Tests
     - run: yarn test
