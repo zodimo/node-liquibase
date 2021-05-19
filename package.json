@@ -22,8 +22,11 @@
     "copy:dependencies": "yarn copy:liquibase && yarn copy:drivers",
     "copy:liquibase": "ncp ./bin/liquibase ./dist/liquibase",
     "copy:drivers": "ncp ./drivers ./dist/drivers",
+    "clean": "yarn clean:dist",
+    "clean:dist": "yarn rimraf ./dist",
     "semantic-release": "semantic-release",
-    "tsup": "tsup"
+    "tsup": "tsup",
+    "rimraf": "rimraf"
   },
   "engines": {
     "node": ">=6.9.0"
@@ -68,6 +71,7 @@
     "dotenv": "^8.2.0",
     "husky": "^6.0.0",
     "ncp": "^2.0.0",
+    "rimraf": "^3.0.2",
     "semantic-release": "^17.4.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.2.0",
