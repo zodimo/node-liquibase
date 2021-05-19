@@ -1,4 +1,4 @@
-import { LiquibaseConfig } from 'models';
+import { LiquibaseConfig } from '../models';
 import { Logger } from '../util';
 export declare class CommandHandler {
     logger: Logger;

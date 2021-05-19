@@ -1,4 +1,4 @@
-import { LiquibaseConfig } from 'models';
+import { LiquibaseConfig } from '../models';
 export declare class Logger {
     private config;
     constructor(config: LiquibaseConfig);
