@@ -1,9 +1,10 @@
 #!/usr/bin/env node
+import { LiquibaseConfig } from './models';
 import { LiquibaseCommands } from './enums';
 import { CommandHandler, FileHelper } from './util';
 
 const commandString = getCommandString();
-CommandHandler.spawnChildProcess(commandString);
+new CommandHandler({} as LiquibaseConfig).spawnChildProcess(commandString);
 
 
 function getCommandString(): string {
