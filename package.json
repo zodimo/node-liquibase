@@ -63,7 +63,8 @@
     "printWidth": 120,
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "useTabs": false
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
