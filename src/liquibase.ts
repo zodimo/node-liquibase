@@ -46,7 +46,7 @@ export class Liquibase {
    * 	LiquibaseConfig,
    * 	Liquibase,
    * 	POSTGRESQL_DEFAULT_CONFIG,
-   * } from 'node-liquibase';
+   * } from 'liquibase';
    *
    * const myConfig: LiquibaseConfig = {
    * 	...POSTGRESQL_DEFAULT_CONFIG,

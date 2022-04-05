@@ -109,7 +109,7 @@ import {
 	LiquibaseConfig,
 	Liquibase,
 	POSTGRESQL_DEFAULT_CONFIG,
-} from 'node-liquibase';
+} from 'liquibase';
 
 const myConfig: LiquibaseConfig = {
 	...POSTGRESQL_DEFAULT_CONFIG,
@@ -131,8 +131,8 @@ doEet();
 #### JavaScript
 
 ```js
-const Liquibase = require('node-liquibase').Liquibase;
-const POSTGRESQL_DEFAULT_CONFIG = require('node-liquibase').POSTGRESQL_DEFAULT_CONFIG;
+const Liquibase = require('liquibase').Liquibase;
+const POSTGRESQL_DEFAULT_CONFIG = require('liquibase').POSTGRESQL_DEFAULT_CONFIG;
 
 const myConfig = {
   ...POSTGRESQL_DEFAULT_CONFIG,
